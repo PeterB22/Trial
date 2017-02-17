@@ -1,0 +1,31 @@
+
+<a href="/">Back</a>
+
+<br />
+<br />
+<br />
+<form name="filterCountries">
+  <label>Region: </label>
+  <select id="region" name="region"  (change)="getDataByValue('region',$event.target.value)">
+    <option value="">-- Choose --</option>
+    <option value="europe">Europe</option>
+    <option value="africa">Africa</option>
+    <option value="asia">Asia</option>
+    <option value="americas">Americas</option>
+    <option value="oceania">Oceania</option>
+    <option value="polar">Polar</option>
+  </select>
+
+  <label>Country: </label>
+  <input type="text"  (keyup)="getDataByValue('name',$event.target.value)"  name="searchCountry" placeholder="enter country name" />
+
+  <label>Currency: </label>
+  <input type="text" (keyup)="getDataByValue('currency',$event.target.value)"  name="searchCurrency" placeholder="enter currency type" />
+
+  <div class="countries">
+    <div class="country" *ngFor="let country of countries; let num=index">
+        <a href="#edit"><div class="name">{{num+1}} - {{country.name}}</div></a>
+    </div>
+  </div>
+
+</form>
