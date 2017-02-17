@@ -24,7 +24,7 @@
 
   <div class="countries">
     <div class="country" *ngFor="let country of countries; let num=index">
-        <a href="#edit"><div class="name">{{num+1}} - {{country.name}}</div></a>
+        <a href="#edit" (click)="selectCountry(num+1)"><div class="name">{{num+1}} - {{country.name}}</div></a>
     </div>
   </div>
 
