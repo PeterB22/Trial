@@ -1,1 +1,22 @@
-<app-edit></app-edit>
+<div *ngIf="country">
+    <form>
+        <label>Name: </label>   
+        <input type='text' name='countryName' value="{{country.name}}" />
+        <label>Capital: </label>
+        <input type='text' name='capital' value="{{country.capital}}" />
+        <label>Region: </label>
+        <input type='text' name='region' value="{{country.region}}" />
+
+        <label>Sub region: </label>   
+        <input type='text' name='subRegion' value="{{country.subRegion}}" />
+        <label>population: </label>
+        <input type='number' name='population' value="{{country.population}}" />
+
+        <label>Calling codes: </label>   
+        <input type='text' name='callingCodes' value="{{country.callingCodes}}" />
+        <label>Top level domain: </label>
+        <input type='text' name='topLevelDomain' value="{{country.topLevelDomain}}" />
+        <label>Languages:</label>
+        <input type='text' name='languages' value="{{country.language}}" />    
+    </form>
+</div>

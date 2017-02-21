@@ -1,29 +1,34 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import {Http} from '@angular/http'
 import {Country} from '../model/country.model'
 import {CountryBuilder} from '../model/country.model'
-import 'rxjs/add/operator/map'
+
 
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
+  outputs:['itemSelected']
 })
 export class FilterComponent implements OnInit {
-  selectValue:string;
-  nameInputValue :string;
-  currencyInputValue:string;
+  formAttributes:string[];
+  filledElements:number;
   countries:Country[];
+  selectedCountry : Country;
 
-  constructor(private http:Http){}
+  constructor(private http:Http){
+  }
 
 
-  getDataByValue(type,value){
-     if(value !=""){
+  getDataByValue():void {
+      this.formAttributes = this.getFormValues().split(",");
+      this.filledElements=parseInt(this.formAttributes[0]);
+      console.log(this.formAttributes[2]);
+     if(this.filledElements == 1 && this.formAttributes[1] != "" && this.formAttributes[2]!=""){ 
        this.countries = [];
-       this.http.get("https://restcountries.eu/rest/v1/" + type + "/" + value)
+       this.http.get("https://restcountries.eu/rest/v1/" + this.formAttributes[1] + "/" + this.formAttributes[2])
                 .subscribe(res=>{
                    res.json();
                    for(var i=0;i<res.json().length;i++){
@@ -45,23 +50,41 @@ export class FilterComponent implements OnInit {
                  );
      
       
-  
+      document.getElementById("countries").style.display='block';
     }
+    else
+      document.getElementById("countries").style.display='none';
    // console.log(this.countries);
   }
 
+  
 
+  getFormValues():string{
+    let numOfFilledElements=0;
+    let name="",value="";
+    let formElements = document.forms['filterCountries'].elements;
+    for(let i=0;i<formElements.length;i++){
+      if(formElements.item(i).value != ""){
+        numOfFilledElements++;
+        console.log(formElements.item(i).value);
+               console.log(formElements.item(i).name);
+        value=formElements.item(i).value;
+        name=formElements.item(i).name;
+      }
+    }
 
-  selectCountry(index){
-      var nodes = document.getElementsByTagName("app-filter");
-
-      for (var i = 0, len = nodes.length; i != len; ++i) 
-        nodes[0].parentNode.removeChild(nodes[0]);
-
-      console.log(index);
+    return numOfFilledElements+","+ name + "," + value;
   }
 
-  
+
+  editCountry(country : Country):void {
+     this.selectedCountry = country;
+     document.getElementById('editCountry').style.display='block';
+     document.getElementById('filterCountries').style.display='none';
+     document.getElementById('countries').style.display='none';
+  }
+
+ 
 
   ngOnInit() {
   }

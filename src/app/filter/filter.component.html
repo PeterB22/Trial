@@ -4,9 +4,11 @@
 <br />
 <br />
 <br />
-<form name="filterCountries">
+
+
+<form name="filterCountries" id='filterCountries'>
   <label>Region: </label>
-  <select id="region" name="region"  (change)="getDataByValue('region',$event.target.value)">
+  <select id="region" name="region"  (change)="getDataByValue()"  >
     <option value="">-- Choose --</option>
     <option value="europe">Europe</option>
     <option value="africa">Africa</option>
@@ -17,15 +19,22 @@
   </select>
 
   <label>Country: </label>
-  <input type="text"  (keyup)="getDataByValue('name',$event.target.value)"  name="searchCountry" placeholder="enter country name" />
+  <input type="text"  (keyup)="getDataByValue()"  name="name" placeholder="Enter country name" />
 
   <label>Currency: </label>
-  <input type="text" (keyup)="getDataByValue('currency',$event.target.value)"  name="searchCurrency" placeholder="enter currency type" />
+  <input type="text" (keyup)="getDataByValue()"  name="currency" placeholder="Enter currency type" />
 
-  <div class="countries">
-    <div class="country" *ngFor="let country of countries; let num=index">
-        <a href="#edit" (click)="selectCountry(num+1)"><div class="name">{{num+1}} - {{country.name}}</div></a>
+</form>
+
+  <div id="countries">
+    <div class="country" *ngFor="let country of countries; let num=index"> 
+         <a href="#edit" (click)='editCountry(country)'><div class="name">{{country.name}}</div></a>
     </div>
   </div>
 
-</form>
+
+
+
+
+
+<app-edit [country]="selectedCountry" id='editCountry'></app-edit>
