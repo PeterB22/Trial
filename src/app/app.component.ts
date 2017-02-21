@@ -8,7 +8,7 @@ import {FilterComponent} from './filter/filter.component'
 })
 export class AppComponent {
   // title = 'Fun with countries!';
-
+ 
   showList(){
     document.getElementById("listCountries").style.display="block";
     document.getElementById("listRedirect").style.display="none";

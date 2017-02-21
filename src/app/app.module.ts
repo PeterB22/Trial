@@ -9,7 +9,6 @@ import { ListComponent } from './list/list.component';
 import { FilterComponent } from './filter/filter.component';
 import { EditComponent } from './edit/edit.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

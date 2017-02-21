@@ -66,8 +66,6 @@ export class FilterComponent implements OnInit {
     for(let i=0;i<formElements.length;i++){
       if(formElements.item(i).value != ""){
         numOfFilledElements++;
-        console.log(formElements.item(i).value);
-               console.log(formElements.item(i).name);
         value=formElements.item(i).value;
         name=formElements.item(i).name;
       }
