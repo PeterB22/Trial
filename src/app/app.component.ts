@@ -8,7 +8,7 @@ import {Country} from './model/country.model'
 })
 export class AppComponent {
    title = 'Fun with countries!';
- 
+  
   hideWelcome():void{
     document.getElementById("welcome").style.display="none";
   }
