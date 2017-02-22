@@ -1,0 +1,14 @@
+.country{
+    margin:1% 0;
+    border:1px solid #e8e8e8;
+    
+}
+
+.country:hover{
+    cursor:pointer;
+}
+
+
+label{
+   margin-right:5px;
+}

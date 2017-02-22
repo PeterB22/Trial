@@ -1,0 +1,12 @@
+.settings{
+    margin-top:5%;
+    text-align: center;
+}
+
+.settings p{
+    font-size:16px;
+}
+
+.settings > .mat-slider{
+    width:80%;
+}

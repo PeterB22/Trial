@@ -1,12 +1,26 @@
 
-<h1>
-  {{title}} 
-</h1>
-<br />
-<a href="#list" (click) = "showList()" id="listRedirect">list</a>  
+<md-toolbar color="primary">
+{{title}}
+</md-toolbar>
+
+<nav>
+  <a routerLink="" routerLinkActive="active" (click)="showWelcome()"><md-icon mdTooltip="home">home</md-icon></a>
+  <a routerLink="list" routerLinkActive="active" (click)="hideWelcome()"><md-icon mdTooltip="list">list</md-icon></a>
+  <a routerLink="settings" routerLinkActive="active" (click)="hideWelcome()"><md-icon mdTooltip="settings">settings</md-icon></a>
+</nav>
+<router-outlet></router-outlet>
+
+
+<div id="welcome">
+    Welcome!
+</div>
 
 
 
-<app-list id="listCountries"></app-list>
+
+
+
+
+
 
 

@@ -1,2 +1,48 @@
 
-<app-filter id='filter'></app-filter>
+    <form name="filterCountries" id='filterCountries'>
+        <md-grid-list cols="3" rowHeight="100px">
+
+            <md-grid-tile>
+            <label>Region: </label>
+            <md-select id="region" name="region" [(ngModel)]="selectedValue" (change)="getDataByValue()">
+                <md-option value="">-- Choose --</md-option>
+                <md-option value="europe">Europe</md-option>
+                <md-option value="africa">Africa</md-option>
+                <md-option value="asia">Asia</md-option>
+                <md-option value="americas">Americas</md-option>
+                <md-option value="oceania">Oceania</md-option>
+                <md-option value="polar">Polar</md-option>
+            </md-select>
+          
+            </md-grid-tile>
+           
+            <md-grid-tile>
+                <label>Country: </label>
+                <md-input-container>
+                    <input mdInput type="text"  (keyup)="getDataByValue()"  name="name" placeholder="Enter country name" />
+                </md-input-container>
+            </md-grid-tile>
+
+            <md-grid-tile>
+                <label>Currency: </label>
+                <md-input-container>
+                    <input mdInput type="text" (keyup)="getDataByValue()"  name="currency" maxlength="3" pattern="[A-Z][a-z]{3}" placeholder="Enter currency type" />
+                </md-input-container>
+            </md-grid-tile>
+        </md-grid-list>
+    
+    </form>
+
+    <div id="countries">
+
+        <md-card class="country" *ngFor="let country of countries; let num=index">
+                <a (click)="editCountry(country)"  routerLink="/edit" routerLinkActive="active">
+            <md-card-title>{{country.name}}</md-card-title> 
+            <md-card-subtitle>{{country.capital}}</md-card-subtitle>
+            <md-card-content>{{country.region}}</md-card-content>
+                </a>
+        </md-card>
+
+    </div>
+
+<router-outlet></router-outlet>

@@ -1,4 +1,21 @@
-#listCountries{
-    display:none;
+.body{
+    background-color:#e5e5e5;
 }
 
+#welcome{
+    background-color:#eaeaea;
+    text-align:center;
+    padding:10%;
+    font-size:26px;
+    font-family:Roboto,sans-serif;
+}
+
+nav{
+    text-align:center;
+}
+
+nav > a > .mat-icon{
+    font-size:40px;
+    color:#5e5e5e;
+    margin:0 10%;
+}

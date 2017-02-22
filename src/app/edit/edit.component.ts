@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FilterComponent} from '../filter/filter.component'
-import {Country} from '../model/country.model'
+import {ListComponent} from "../list/list.component";
+import {Country} from '../model/country.model';
 
 @Component({
   selector: 'app-edit',
@@ -10,8 +10,9 @@ import {Country} from '../model/country.model'
 })
 export class EditComponent implements OnInit {
   @Input() country : Country;
+
   constructor() { 
-  
+   
   }
   
 
