@@ -23,5 +23,5 @@ export class EditComponent implements OnInit{
   ngOnInit():void {
    document.getElementById("welcome").style.display="none";
    this.country = this.countryService.getData();
-
+  }
 }
