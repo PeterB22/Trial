@@ -5,7 +5,7 @@
                 <p>
                     <label>Name: </label>
                     <md-input-container>   
-                        <input mdInput type='text' name='countryName' value="{{country.name}}" />
+                        <input mdInput type="text" name="countryName" value="{{country.name}}" />
                     </md-input-container>
                 </p>
             </md-grid-tile>
@@ -13,7 +13,7 @@
                   <p>
                     <label>Capital: </label>
                     <md-input-container>
-                        <input mdInput type='text' name='capital' value="{{country.capital}}" />
+                        <input mdInput type="text" name="capital" value="{{country.capital}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -21,7 +21,7 @@
                   <p>
                     <label>Region: </label>
                     <md-input-container>
-                        <input mdInput type='text' name='region' value="{{country.region}}" />
+                        <input mdInput type="text" name="region" value="{{country.region}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -29,7 +29,7 @@
                   <p>
                     <label>Sub region: </label>   
                     <md-input-container>
-                        <input mdInput type='text' name='subRegion' value="{{country.subRegion}}" />
+                        <input mdInput type="text" name="subRegion" value="{{country.subRegion}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -37,7 +37,7 @@
                   <p>
                     <label>population: </label>
                     <md-input-container>
-                        <input mdInput type='number' name='population' value="{{country.population}}" />
+                        <input mdInput type="number" name="population" value="{{country.population}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -45,7 +45,7 @@
                   <p>
                     <label>Calling codes: </label>   
                     <md-input-container>
-                        <input mdInput type='text' name='callingCodes' value="{{country.callingCodes}}" />
+                        <input mdInput type="text" name="callingCodes" value="{{country.callingCodes}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -53,7 +53,7 @@
                   <p>
                     <label>Top level domain: </label>
                     <md-input-container>
-                        <input mdInput type='text' name='topLevelDomain' value="{{country.topLevelDomain}}" />
+                        <input mdInput type="text" name="topLevelDomain" value="{{country.topLevelDomain}}" />
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -61,7 +61,7 @@
                   <p>
                     <label>Languages:</label>
                     <md-input-container>
-                        <input mdInput type='text' name='languages' value="{{country.language}}" />    
+                        <input mdInput type="text" name="languages" value="{{country.language}}" />    
                     </md-input-container>
                   </p>
             </md-grid-tile>
@@ -71,8 +71,10 @@
 </div>
 
 
-<div *ngIf='!country'>
+<div *ngIf="!country">
     Nothing to display, you have not selected any country yet!
 </div>
-
-<button md-raised-button color="primary" (click)="goBack()">Back</button>
+<p id="editButtonsContainer">
+    <button md-raised-button disabled="disabled">Save</button>
+    <button md-raised-button color="primary" (click)="goBack()">Back</button>
+</p>

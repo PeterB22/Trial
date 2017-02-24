@@ -10,9 +10,10 @@ nav:first-child{
     width:20%;
 }
 
-button{
-    float:right;
-    margin-right:20%
+#editButtonsContainer{
+    text-align:center;
 }
 
-
+#editButtonsContainer > button{
+    margin:0 10%;
+}

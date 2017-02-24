@@ -1,5 +1,5 @@
 
-    <form name="filterCountries" id='filterCountries'>
+    <form name="filterCountries" id="filterCountries">
        <div id="inputContainer">
            <p>
             <label>Region: </label>
@@ -28,11 +28,12 @@
     </form>
     
     <div id="countries">
-        <md-card class="country" (click)="editCountry(country)" routerLink="/edit" routerLinkActive="active" *ngFor="let country of countries; let num=index">
+        <md-card class="country" (click)="editCountry(country)" routerLink="/edit" routerLinkActive="active" *ngFor="let country of countries | slice:0:limit; let num=index">
             <md-card-title>{{country.name}}</md-card-title> 
             <md-card-subtitle>{{country.capital}}</md-card-subtitle>
             <md-card-content>{{country.region}}</md-card-content>
         </md-card>
+        <button id="showMoreButton" md-raised-button color="primary">Show more</button>
     </div>
 
 <router-outlet></router-outlet>

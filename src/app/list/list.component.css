@@ -22,9 +22,16 @@ label{
 }
 
 #inputContainer{
-    margin:0 auto;
+    margin:1% auto;
     width:100%;
     text-align: center;
+}
+
+#showMoreButton{
+    display:block;
+    position:relative;
+    width:20%;
+    margin:1% auto;
 }
 
 

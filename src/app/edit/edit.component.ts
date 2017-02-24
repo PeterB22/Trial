@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListComponent } from "../list/list.component";
+import { ListComponent } from '../list/list.component';
 import { Country } from '../model/country.model';
 import { CountryService } from '../country.service';
 import { Location } from '@angular/common';
@@ -23,7 +23,5 @@ export class EditComponent implements OnInit{
   ngOnInit():void {
    document.getElementById("welcome").style.display="none";
    this.country = this.countryService.getData();
-   console.log(this.countryService.getData());
-  }
 
 }

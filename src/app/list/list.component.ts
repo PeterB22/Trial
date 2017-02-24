@@ -17,17 +17,16 @@ export class ListComponent implements OnInit {
   selectValue:string = "";
   countries:Country[];
   selectedCountry : Country;
-  
+  limit:number;
   constructor(private http:Http,private countryService:CountryService){
 
   }
 
 
    getDataByValue():void {
- 
+      this.limit=parseInt(window.localStorage.getItem("numOfRecords")); 
       this.formAttributes = this.getInputValues().split(",");
       this.filledElements=parseInt(this.formAttributes[0]);
-   
       if(this.selectValue != ""){
           this.filledElements++;
           this.formAttributes[1]="region";
@@ -37,6 +36,7 @@ export class ListComponent implements OnInit {
   
       if(this.filledElements == 1 && this.formAttributes[1] != "" && this.formAttributes[2]!=""){ 
            this.countries = [];
+           
            this.http.get("https://restcountries.eu/rest/v1/" + this.formAttributes[1] + "/" + this.formAttributes[2])
                     .subscribe(res=>{
                        res.json();
@@ -51,17 +51,18 @@ export class ListComponent implements OnInit {
                                              .setCallingCodes(res.json()[i].callingCodes)
                                              .build();
                          
-                         this.countries.push(country);                   
-                       }
-                       
+                         this.countries.push(country);
+                          
+                       }              
                       }
                     );
-         
+        
           
-           document.getElementById("countries").style.display='block';
+           document.getElementById("countries").style.display="block";
+          
       }
       else
-           document.getElementById("countries").style.display='none';
+           document.getElementById("countries").style.display="none";
      
   }
 
@@ -73,7 +74,7 @@ export class ListComponent implements OnInit {
   getInputValues():string {
     let numOfFilledElements=0;
     let name="",value="";
-    let formElements = document.forms['filterCountries'].elements;
+    let formElements = document.forms["filterCountries"].elements;
     for(let i=0;i<formElements.length;i++){
       if(formElements.item(i).value != ""){
         numOfFilledElements++;
@@ -88,12 +89,11 @@ export class ListComponent implements OnInit {
   editCountry(country : Country):void {
      this.selectedCountry = country;
      this.countryService.saveData(country);
-     console.log(this.countryService.getData());
   }
 
- 
 
   ngOnInit() {
+    document.getElementById("showMoreButton").style.display="none";
     document.getElementById("welcome").style.display="none";
   }
 
