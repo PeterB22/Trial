@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter,Output } from '@angular/core';
-import {Country} from '../model/country.model'
-import {CountryBuilder} from '../model/country.model'
-import {Http} from '@angular/http'
-
+import { Component, OnInit } from '@angular/core';
+import { Country } from '../model/country.model'
+import { CountryBuilder } from '../model/country.model'
+import { Http } from '@angular/http';
+import { CountryService } from '../country.service';
 
 @Component({
   selector: 'app-list',
@@ -17,31 +17,25 @@ export class ListComponent implements OnInit {
   selectValue:string = "";
   countries:Country[];
   selectedCountry : Country;
-  @Output('country') outGoingData = new EventEmitter<Country>();
+  
+  constructor(private http:Http,private countryService:CountryService){
 
-  constructor(private http:Http){
   }
 
 
    getDataByValue():void {
  
-      this.formAttributes = this.getFormValues().split(",");
+      this.formAttributes = this.getInputValues().split(",");
       this.filledElements=parseInt(this.formAttributes[0]);
    
- /*     if(this.selectValue !="choose" 
-        this.filledElements++;
-        this.formAttributes[1]="region";
-        this.formAttributes[2]=this.selectValue;
-    */
-        console.log(this.selectValue);
-        if(this.selectValue != ""){
+      if(this.selectValue != ""){
           this.filledElements++;
           this.formAttributes[1]="region";
           this.formAttributes[2]=this.selectValue;
-        }
+      }
 
   
-         if(this.filledElements == 1 && this.formAttributes[1] != "" && this.formAttributes[2]!=""){ 
+      if(this.filledElements == 1 && this.formAttributes[1] != "" && this.formAttributes[2]!=""){ 
            this.countries = [];
            this.http.get("https://restcountries.eu/rest/v1/" + this.formAttributes[1] + "/" + this.formAttributes[2])
                     .subscribe(res=>{
@@ -61,23 +55,22 @@ export class ListComponent implements OnInit {
                        }
                        
                       }
-                     // error=>console.log("error")
-                     );
+                    );
          
           
-          document.getElementById("countries").style.display='block';
-        }
-        else
-          document.getElementById("countries").style.display='none';
+           document.getElementById("countries").style.display='block';
+      }
+      else
+           document.getElementById("countries").style.display='none';
      
   }
 
-  getSelectValue(value):void{
+  getSelectValue(value):void {
     this.selectValue=value;
     this.getDataByValue();
   }
 
-  getFormValues():string{
+  getInputValues():string {
     let numOfFilledElements=0;
     let name="",value="";
     let formElements = document.forms['filterCountries'].elements;
@@ -88,23 +81,20 @@ export class ListComponent implements OnInit {
         name=formElements.item(i).name;
       }
     }
-    console.log(numOfFilledElements);
     return numOfFilledElements+","+ name + "," + value;
   }
 
 
   editCountry(country : Country):void {
      this.selectedCountry = country;
-     console.log(country);
-     this.outGoingData.emit(country);
-    // document.getElementById('editCountry').style.display='block';
-     document.getElementById('filterCountries').style.display='none';
-     document.getElementById('countries').style.display='none';
+     this.countryService.saveData(country);
+     console.log(this.countryService.getData());
   }
 
  
 
   ngOnInit() {
+    document.getElementById("welcome").style.display="none";
   }
 
 }

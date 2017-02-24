@@ -5,9 +5,13 @@ import { HttpModule,JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { EditComponent } from './edit/edit.component';
-import {MaterialModule} from "@angular/material";
-import {RouterModule,Routes} from '@angular/router';
+import { MaterialModule } from "@angular/material";
+import { RouterModule,Routes } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component'
+import { CountryService } from './country.service';
+import { SettingsService } from './settings.service';
+
+
 
 const appRoutes :Routes = [
   {path:'list',component:ListComponent},
@@ -29,6 +33,7 @@ const appRoutes :Routes = [
     MaterialModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
+  providers:[CountryService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

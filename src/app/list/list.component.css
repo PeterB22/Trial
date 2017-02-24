@@ -6,6 +6,7 @@
 
 .country:hover{
     cursor:pointer;
+    box-shadow:0 0 5px #000;
 }
 
 
@@ -14,6 +15,20 @@ label{
 }
 
 
-nav > a:nth-child(1){
-    display:block;
+#countries{
+    padding:2%;
+    width:70%;
+    margin:0 auto;
+}
+
+#inputContainer{
+    margin:0 auto;
+    width:100%;
+    text-align: center;
+}
+
+
+#inputContainer > p{
+    margin:0 2%;
+    display:inline-block;
 }

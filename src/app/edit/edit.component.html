@@ -1,27 +1,78 @@
 <div *ngIf="country">
-    <form>
-        <label>Name: </label>   
-        <input type='text' name='countryName' value="{{country.name}}" />
-        <label>Capital: </label>
-        <input type='text' name='capital' value="{{country.capital}}" />
-        <label>Region: </label>
-        <input type='text' name='region' value="{{country.region}}" />
-
-        <label>Sub region: </label>   
-        <input type='text' name='subRegion' value="{{country.subRegion}}" />
-        <label>population: </label>
-        <input type='number' name='population' value="{{country.population}}" />
-
-        <label>Calling codes: </label>   
-        <input type='text' name='callingCodes' value="{{country.callingCodes}}" />
-        <label>Top level domain: </label>
-        <input type='text' name='topLevelDomain' value="{{country.topLevelDomain}}" />
-        <label>Languages:</label>
-        <input type='text' name='languages' value="{{country.language}}" />    
+    <form id="editForm">
+        <md-grid-list cols="2" rowHeight="100px">
+            <md-grid-tile>
+                <p>
+                    <label>Name: </label>
+                    <md-input-container>   
+                        <input mdInput type='text' name='countryName' value="{{country.name}}" />
+                    </md-input-container>
+                </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Capital: </label>
+                    <md-input-container>
+                        <input mdInput type='text' name='capital' value="{{country.capital}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Region: </label>
+                    <md-input-container>
+                        <input mdInput type='text' name='region' value="{{country.region}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Sub region: </label>   
+                    <md-input-container>
+                        <input mdInput type='text' name='subRegion' value="{{country.subRegion}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>population: </label>
+                    <md-input-container>
+                        <input mdInput type='number' name='population' value="{{country.population}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Calling codes: </label>   
+                    <md-input-container>
+                        <input mdInput type='text' name='callingCodes' value="{{country.callingCodes}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Top level domain: </label>
+                    <md-input-container>
+                        <input mdInput type='text' name='topLevelDomain' value="{{country.topLevelDomain}}" />
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+            <md-grid-tile>
+                  <p>
+                    <label>Languages:</label>
+                    <md-input-container>
+                        <input mdInput type='text' name='languages' value="{{country.language}}" />    
+                    </md-input-container>
+                  </p>
+            </md-grid-tile>
+        </md-grid-list>
     </form>
+
 </div>
 
 
 <div *ngIf='!country'>
     Nothing to display, you have not selected any country yet!
 </div>
+
+<button md-raised-button color="primary" (click)="goBack()">Back</button>

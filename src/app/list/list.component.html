@@ -1,8 +1,7 @@
 
     <form name="filterCountries" id='filterCountries'>
-        <md-grid-list cols="3" rowHeight="100px">
-
-            <md-grid-tile>
+       <div id="inputContainer">
+           <p>
             <label>Region: </label>
             <md-select id="region" name="region" [(ngModel)]="selectedValue" (change)="getSelectValue(selectedValue)">
                 <md-option value="">-- Choose --</md-option>
@@ -13,32 +12,28 @@
                 <md-option value="oceania">Oceania</md-option>
                 <md-option value="polar">Polar</md-option>
             </md-select>   
-            </md-grid-tile>
-        
-            <md-grid-tile>
+           </p>
+           <p>
                 <label>Country: </label>
                 <md-input-container>
                     <input mdInput type="text"  (keyup)="getDataByValue()"  name="name" placeholder="Enter country name" />
                 </md-input-container>
-            </md-grid-tile>
-
-            <md-grid-tile>
+                <p>
                 <label>Currency: </label>
                 <md-input-container>
-                    <input mdInput type="text" (keyup)="getDataByValue()"  name="currency" maxlength="3" pattern="[A-Z][a-z]{3}" placeholder="Enter currency type" />
+                    <input mdInput type="text" (keyup)="getDataByValue()"  name="currency" maxlength="3" pattern="[a-zA-Z]{3}" placeholder="Enter currency type" />
                 </md-input-container>
-            </md-grid-tile>
-        </md-grid-list>
-    
+                </p>
+        </div>
     </form>
+    
     <div id="countries">
-
-        <md-card class="country" (click)="editCountry(country)"  routerLink="/edit" routerLinkActive="active" *ngFor="let country of countries; let num=index">
+        <md-card class="country" (click)="editCountry(country)" routerLink="/edit" routerLinkActive="active" *ngFor="let country of countries; let num=index">
             <md-card-title>{{country.name}}</md-card-title> 
             <md-card-subtitle>{{country.capital}}</md-card-subtitle>
             <md-card-content>{{country.region}}</md-card-content>
         </md-card>
-
     </div>
 
 <router-outlet></router-outlet>
+
